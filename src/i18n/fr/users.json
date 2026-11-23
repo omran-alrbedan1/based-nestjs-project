@@ -1,0 +1,5 @@
+{
+  "fetch_success": "Utilisateurs récupérés avec succès",
+  "deleted_success": "Utilisateur supprimé avec succès",
+  "not_found": "Utilisateur n°{id} introuvable"
+}

@@ -1,0 +1,5 @@
+{
+  "fetch_success": "Users fetched successfully",
+  "deleted_success": "User deleted successfully",
+  "not_found": "User #{id} not found"
+}

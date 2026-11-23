@@ -1,0 +1,276 @@
+@host = http://localhost:3000
+@token = paste-your-jwt-token-here
+
+### Create User
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "firstName": "Omran",
+  "lastName": "Ahmad",
+  "email": "omran@example.com",
+  "gender": "male",
+  "password": "password123"
+}
+
+### Create User With Profile
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "firstName": "Sara",
+  "lastName": "Ali",
+  "email": "sara@example.com",
+  "gender": "female",
+  "password": "password123",
+  "profile": {
+    "bio": "Software developer",
+    "gender": "female",
+    "dateOfBirth": "2000-01-15",
+    "profileImage": "https://example.com/avatar.png"
+  }
+}
+
+### Create User (invalid - should return 400)
+POST {{host}}/users
+Content-Type: application/json
+
+{
+  "firstName": "ab",
+  "lastName": "cd",
+  "email": "not-an-email",
+  "password": "short"
+}
+
+### Get All Users (with pagination)
+GET {{host}}/users?limit=10&page=1
+
+### Filter Users By Name And Email
+GET {{host}}/users?firstName=Sara&email=sara%40example.com&page=1&limit=5
+
+### Get User By Id
+GET {{host}}/users/1
+
+### Update User
+PATCH {{host}}/users/1
+Content-Type: application/json
+
+{
+  "firstName": "Updated",
+  "email": "updated@example.com"
+}
+
+### Delete User
+DELETE {{host}}/users/1
+
+### Delete User (non-existent - should return 404)
+DELETE {{host}}/users/9999
+
+### Create Profile
+POST {{host}}/profile
+Content-Type: application/json
+
+{
+  "firstName": "Sara",
+  "lastName": "Ali",
+  "gender": "female",
+  "dateOfBirth": "2000-01-15",
+  "bio": "Software developer",
+  "profileImage": "https://example.com/avatar.png"
+}
+
+### Get All Profiles
+GET {{host}}/profile
+
+### Get Profile By Id
+GET {{host}}/profile/1
+
+### Update Profile
+PATCH {{host}}/profile/1
+Content-Type: application/json
+
+{
+  "bio": "Updated bio",
+  "profileImage": "https://example.com/new-avatar.png"
+}
+
+### Delete Profile
+DELETE {{host}}/profile/1
+
+### Create Tweet
+POST {{host}}/tweets
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "Hello world, my first tweet!",
+  "image": "https://example.com/tweet-image.png"
+}
+
+### Create Tweet (no image)
+POST {{host}}/tweets
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "Another tweet"
+}
+
+### Create Tweet With Hashtags
+POST {{host}}/tweets
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "Tweet with hashtags!",
+  "hashtag": [1,4]
+}
+
+### Create Tweet (no token - should return 401)
+POST {{host}}/tweets
+Content-Type: application/json
+
+{
+  "text": "This should fail"
+}
+
+### Get All Tweets
+GET {{host}}/tweets?page=1&limit=10
+
+### Get Tweets By User Id
+GET {{host}}/tweets/5?page=2&limit=5
+
+### Update Tweet
+PATCH {{host}}/tweets/1
+Content-Type: application/json
+
+{
+  "text": "Updated tweet text",
+   "hashtag": [1,3]
+}
+
+### Delete Tweet
+DELETE {{host}}/tweets/4
+
+### Delete Tweet (non-existent - should return 404)
+DELETE {{host}}/tweets/9999
+
+### Create Hashtag
+POST {{host}}/hashtag
+Content-Type: application/json
+
+{
+  "name": "nestjs2"
+}
+
+### Create Hashtag
+POST {{host}}/hashtag
+Content-Type: application/json
+
+{
+  "name": "typescript"
+}
+
+### Get All Hashtags (with tweets)
+GET {{host}}/hashtag
+
+### Get Hashtag By Id (with tweets)
+GET {{host}}/hashtag/1
+
+### Update Hashtag
+PATCH {{host}}/hashtag/1
+Content-Type: application/json
+
+{
+  "name": "nodejs"
+}
+
+### Delete Hashtag
+DELETE {{host}}/hashtag/1
+
+### Sign Up
+POST {{host}}/auth/signup
+Content-Type: application/json
+
+{
+  "firstName": "New",
+  "lastName": "User",
+  "email": "newuser@example.com",
+  "gender": "male",
+  "password": "password123"
+}
+
+### Sign Up With Profile
+POST {{host}}/auth/signup
+Content-Type: application/json
+
+{
+  "firstName": "Lina",
+  "lastName": "Khalil",
+  "email": "lina@example.com",
+  "gender": "female",
+  "password": "password123",
+  "profile": {
+    "bio": "New member",
+    "dateOfBirth": "1999-03-20",
+    "profileImage": "https://example.com/lina.png"
+  }
+}
+
+### Sign Up (duplicate email - should return 409)
+POST {{host}}/auth/signup
+Content-Type: application/json
+
+{
+  "firstName": "Omran",
+  "lastName": "Ahmad",
+  "email": "omran@example.com",
+  "password": "password123"
+}
+### Login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "omran@example.com",
+  "password": "password123"
+}
+
+### Login (wrong password - should return 401)
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "omran@example.com",
+  "password": "wrongpassword"
+}
+
+### Login (unknown email - should return 401)
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "nobody@example.com",
+  "password": "password123"
+}
+### Refresh Tokens
+POST {{host}}/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "paste-the-refresh-token-here"
+}
+
+### Login (Arabic messages - Accept-Language)
+POST {{host}}/auth/login
+Content-Type: application/json
+Accept-Language: ar
+
+{
+  "email": "omran@example.com",
+  "password": "password123"
+}
+
+### Logout (requires access token)
+POST {{host}}/auth/logout
+Authorization: Bearer {{token}}

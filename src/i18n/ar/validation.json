@@ -1,0 +1,15 @@
+{
+  "NOT_EMPTY": "حقل {property} لا يمكن أن يكون فارغاً",
+  "IS_STRING": "{property} يجب أن يكون نصاً",
+  "IS_EMAIL": "{property} يجب أن يكون بريداً إلكترونياً صحيحاً",
+  "IS_INT": "{property} يجب أن يكون عدداً صحيحاً",
+  "IS_ARRAY": "{property} يجب أن يكون مصفوفة",
+  "IS_BOOLEAN": "{property} يجب أن يكون قيمة منطقية",
+  "IS_NUMBER": "{property} يجب أن يكون رقماً",
+  "IS_IN": "{property} يجب أن يكون إحدى القيم المسموح بها",
+  "IS_DATE_STRING": "{property} يجب أن يكون تاريخاً صحيحاً",
+  "MIN_LENGTH": "{property} يجب أن يكون {constraints.0} أحرف على الأقل",
+  "MAX_LENGTH": "{property} يجب ألا يتجاوز {constraints.0} حرفاً",
+  "MIN": "{property} يجب أن يكون {constraints.0} على الأقل",
+  "MAX": "{property} يجب أن يكون {constraints.0} على الأكثر"
+}

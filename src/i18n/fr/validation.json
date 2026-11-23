@@ -1,0 +1,15 @@
+{
+  "NOT_EMPTY": "{property} ne peut pas être vide",
+  "IS_STRING": "{property} doit être une chaîne de caractères",
+  "IS_EMAIL": "{property} doit être un e-mail valide",
+  "IS_INT": "{property} doit être un entier",
+  "IS_ARRAY": "{property} doit être un tableau",
+  "IS_BOOLEAN": "{property} doit être un booléen",
+  "IS_NUMBER": "{property} doit être un nombre",
+  "IS_IN": "{property} doit être l'une des valeurs autorisées",
+  "IS_DATE_STRING": "{property} doit être une date valide",
+  "MIN_LENGTH": "{property} doit contenir au moins {constraints.0} caractères",
+  "MAX_LENGTH": "{property} doit contenir au maximum {constraints.0} caractères",
+  "MIN": "{property} doit être au moins {constraints.0}",
+  "MAX": "{property} doit être au maximum {constraints.0}"
+}
